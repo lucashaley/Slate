@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5 pt-0">
+  <% if logged_in? %>
+  <div class="col col-md-12 col-lg-4 bg-gradient-light order-md-first order-lg-last">
+    <h1>Form</h1>
+    <%= turbo_frame_tag "new_idea", src: new_idea_path, target: "_top" %>
+  </div>
+  <% end %>
+  <div class="col col-md-12 col-lg-8 bg-light">
+    <div class="row pt-3">
+      <%= search_form_for @q, {class: "row mb-4"} do |form| %>
+      <div class="col-sm-8">
+        <%= form.search_field :content_cont, class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-sm-2">
+        <%= form.submit "Search", class: "btn btn-sm btn-outline-success form-control-sm w-100" %>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to "Clear", request.path, class: "btn btn-sm btn-outline-warning w-100" %>
+      </div>
+      <% end %>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
+        <%= render partial: "card", collection: @ideas, as: :idea %>
+    </div>
+  </div>
+</div>

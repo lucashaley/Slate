@@ -1,0 +1,27 @@
+<%= form_with(model: realm) do |form| %>
+  <% if realm.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(realm.errors.count, "error") %> prohibited this realm from being saved:</h2>
+
+      <ul>
+        <% realm.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :color, style: "display: block" %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

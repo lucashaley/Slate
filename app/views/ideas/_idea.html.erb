@@ -1,0 +1,24 @@
+<div>
+  <h1 class="display-1"><%= idea.title %></h1>
+  <div class="text-secondary text-opacity-50">
+    <small>Created by: <%= idea.student_id %> on <%= idea.created_at.strftime("%d/%m/%Y") %></small>
+  </div>
+</div>
+<div class="mt-4">
+  <p class="lead">
+    <%= idea.content %>
+  </p>
+  <% idea.realms.each do |realm| %>
+    <span class="badge bg-primary"><%= realm.title %></span>
+  <% end %>
+</div>
+<div class="mt-5">
+  <h2>Comments</h2>
+</div>
+<div>
+  <%= content_tag :ul, class: "list-group" do %>
+    <% idea.comments.each do |comment| %>
+      <%= content_tag :li, comment.content, class: "list-group-item" %>
+    <% end %>
+  <% end %>
+</div>

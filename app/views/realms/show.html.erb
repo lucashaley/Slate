@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @realm %>
+
+<div>
+  <%= link_to "Edit this realm", edit_realm_path(@realm) %> |
+  <%= link_to "Back to realms", realms_path %>
+
+  <%= button_to "Destroy this realm", @realm, method: :delete %>
+</div>

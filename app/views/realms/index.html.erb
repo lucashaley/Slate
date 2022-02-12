@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Realms</h1>
+
+<div id="realms">
+  <% @realms.each do |realm| %>
+    <%= render realm %>
+    <p>
+      <%= link_to "Show this realm", realm %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New realm", new_realm_path %>

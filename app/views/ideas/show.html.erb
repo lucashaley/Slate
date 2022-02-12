@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5">
+
+  <div class="col col-md-12 col-lg-4 bg-gradient-light order-last">
+    <div class="d-flex">
+      <div class="me-auto">
+        <h1>Comments</h1>
+      </div>
+      <div>
+        <h1><span class="badge bg-info"><%= @idea.comments.count -%></span></h1>
+      </div>
+    </div>
+  <% if logged_in? %>
+    <%# turbo_frame_tag "new_comment", src: idea_comment_path(@idea), target: "_top" %>
+    <%= render 'comments/form' %>
+  <% end %>
+    <ul class="list-group list-group-flush mt-3">
+      <%= render @idea.comments %>
+    </ul>
+  </div>
+
+  <div class="col col-md-12 col-lg-8 bg-light">
+    <div class="d-grid gap-2 mt-3">
+      <%= link_to "Back to ideas", ideas_path, class: "btn btn-outline-primary btn-lg" %>
+    </div>
+    <h1 class="display-1"><%= @idea.title %></h1>
+    <p class="lead">
+      <%= @idea.content %>
+    </p>
+    <% @idea.realms.each do |realm| %>
+      <span class="badge bg-primary"><%= realm.title %></span>
+    <% end %>
+    <hr />
+    <% if current_student == @idea.student_id.to_s %>
+    <div class="vstack gap-2 mx-auto">
+      <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg" %>
+      <%= link_to "Delete", { controller: "ideas", action: "destroy"}, data:
+      { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger btn-lg" %>
+    </div>
+    <% end %>
+  </div>
+</div>
