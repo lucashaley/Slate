@@ -21,5 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: slate
+  username: <%= Rails.application.credentials.dig(:production, :database_username) %>
+  password: <%= Rails.application.credentials.dig(:production, :database_password) %>
+  host: cmp.ac.nz
+  port: 3306
