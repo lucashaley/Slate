@@ -151,7 +151,6 @@ GEM
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.4)
-    mysql2 (0.5.3)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -283,7 +282,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
-  mysql2
   pg
   puma (~> 5.0)
   rails (~> 7.0.1)
