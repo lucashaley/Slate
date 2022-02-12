@@ -28,7 +28,7 @@
       <%= @idea.content %>
     </p>
     <% @idea.realms.each do |realm| %>
-      <span class="badge bg-primary"><%= realm.title %></span>
+      <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
     <% end %>
     <hr />
     <% if current_student == @idea.student_id.to_s %>

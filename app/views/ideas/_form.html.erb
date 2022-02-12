@@ -27,10 +27,10 @@
     <fieldset class="row mb-3">
       <legend class="col-form-label col-sm-2 pt-0 col-form-label-sm">Realms</legend>
       <div class="col-sm-10">
-      <%= form.collection_check_boxes :realm_ids, Realm.all, :id, :title do |b| %>
+      <%= form.collection_check_boxes :realm_ids, Realm.all, :id, :title do |realm| %>
         <div class="form-check">
-          <%= b.check_box(class: "form-check-input") %>
-          <span class="badge bg-primary"><%= b.label(class: "form-check-label") %></span>
+          <%= realm.check_box(class: "form-check-input") %>
+          <span class="badge text-black"><%= realm.label(class: "form-check-label") %></span>
         </div>
       <% end %>
       </div>
