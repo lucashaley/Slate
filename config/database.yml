@@ -20,11 +20,21 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: slate
+#   username: <%= Rails.application.credentials.dig(:production, :database_username) %>
+#   password: <%= Rails.application.credentials.dig(:production, :database_password) %>
+#   host: cmp.ac.nz
+#   port: 3306
+
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: slate
-  username: <%= Rails.application.credentials.dig(:production, :database_username) %>
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: slate_production
+  username: slate-cmp
   password: <%= Rails.application.credentials.dig(:production, :database_password) %>
-  host: cmp.ac.nz
-  port: 3306
