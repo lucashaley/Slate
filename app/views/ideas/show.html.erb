@@ -32,10 +32,9 @@
     <% end %>
     <hr />
     <% if current_student == @idea.student_id.to_s %>
-    <div class="vstack gap-2 mx-auto">
-      <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg" %>
-      <%= link_to "Delete", { controller: "ideas", action: "destroy"}, data:
-      { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger btn-lg" %>
+    <div class="hstack gap-2 mx-auto">
+      <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg w-100" %>
+      <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
     </div>
     <% end %>
   </div>

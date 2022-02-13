@@ -1,6 +1,8 @@
+<% if notice %>
 <div class="container row lead p-5">
   <p style="color: green"><%= notice %></p>
 </div>
+<% end %>
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5 pt-0">
   <% if logged_in? %>
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-md-first order-lg-last">
