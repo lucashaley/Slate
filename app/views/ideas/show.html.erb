@@ -15,7 +15,7 @@
     <%= render 'comments/form' %>
   <% end %>
     <ul class="list-group list-group-flush mt-3">
-      <%= render @idea.comments %>
+      <%= render @idea.comments, content_type: "text/html" %>
     </ul>
   </div>
 

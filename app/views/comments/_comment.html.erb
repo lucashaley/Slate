@@ -1,6 +1,6 @@
 <li class="list-group-item d-flex">
   <div class="me-auto">
-    <%= comment.content -%>
+    <%= comment.content.to_s.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe -%>
   </div>
   <div class="text-secondary">
     <%= comment.student_id -%>
