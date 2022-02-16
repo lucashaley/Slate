@@ -7,6 +7,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new
     @q = Idea.ransack(params[:q])
     @ideas = @q.result(distinct: true).order("created_at DESC")
+    @ideas = @ideas.filter_by_student_id(params[:student_id]) if params[:student_id].present?
   end
 
   # GET /ideas/1 or /ideas/1.json

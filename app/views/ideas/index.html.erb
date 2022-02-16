@@ -20,9 +20,14 @@
         <%= form.submit "Search", class: "btn btn-sm btn-outline-success form-control-sm w-100" %>
       </div>
       <div class="col-sm-2">
-        <%= link_to "Clear", request.path, class: "btn btn-sm btn-outline-warning w-100" %>
+        <%= link_to "Clear", ideas_path, class: "btn btn-sm btn-outline-warning w-100" %>
       </div>
       <% end %>
+    </div>
+    <div class="row py-3">
+      <div class="col-sm-12">
+        <%= link_to "Show my ideas", ideas_path(:student_id => current_student), class: "btn btn-sm btn-outline-success w-100" %>
+      </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
         <%= render partial: "card", collection: @ideas, as: :idea %>

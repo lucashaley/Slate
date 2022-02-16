@@ -5,4 +5,6 @@ class Idea < ApplicationRecord
   accepts_nested_attributes_for :comments, :allow_destroy => true
 
   validates :title, :content, presence: true
+
+  scope :filter_by_student_id, -> (student_id) { where student_id: student_id }
 end
