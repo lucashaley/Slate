@@ -6,31 +6,32 @@
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5 pt-0">
   <% if logged_in? %>
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-md-first order-lg-last">
-    <h1>Form</h1>
+    <h1>Add New Idea</h1>
     <%= turbo_frame_tag "new_idea", src: new_idea_path, target: "_top" %>
   </div>
   <% end %>
   <div class="col col-md-12 col-lg-8 bg-light">
-    <div class="row pt-3">
-      <%= search_form_for @q, {class: "row mb-4"} do |form| %>
-      <div class="col-sm-8">
-        <%= form.search_field :content_cont, class: "form-control form-control-sm" %>
-      </div>
-      <div class="col-sm-2">
-        <%= form.submit "Search", class: "btn btn-sm btn-outline-success form-control-sm w-100" %>
-      </div>
-      <div class="col-sm-2">
-        <%= link_to "Clear", ideas_path, class: "btn btn-sm btn-outline-warning w-100" %>
+    <h1>Ideas</h1>
+    <!-- <div class="row pt-3"> -->
+      <%= search_form_for @q do |form| %>
+      <div class="form-floating mb-3">
+        <%= form.search_field :content_cont, class: "form-control", id: "floatingInput",  placeholder: "Murder" %>
+        <label for="floatingInput" class="form-label">Search Ideas</label>
       </div>
       <% end %>
+    <!-- </div> -->
+    <div class="col-sm-12 hstack w-100 gap-2 my-3">
+      <% @realms.each do |realm| %>
+      <%= link_to realm.title, request.params.merge(:realm_id => realm), type: "button", class: "btn btn-sm btn-light w-100", style: "border-color: #"+realm.color + "; background-color: #"+realm.color -%>
+      <% end %>
     </div>
+
     <% if logged_in? %>
-    <div class="row py-3">
-      <div class="col-sm-12">
-        <%= link_to "Show my ideas", ideas_path(:student_id => current_student), class: "btn btn-sm btn-outline-success w-100" %>
-      </div>
+    <div class="col-sm-12">
+      <%= link_to "Show my ideas", request.params.merge(:student_id => current_student), class: "btn btn-sm btn-outline-success w-100" %>
     </div>
     <% end %>
+    <%= link_to "Clear", ideas_path, class: "btn btn-outline-warning my-3 w-100" %>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
         <%= render partial: "card", collection: @ideas, as: :idea %>
     </div>

@@ -8,6 +8,8 @@ class IdeasController < ApplicationController
     @q = Idea.ransack(params[:q])
     @ideas = @q.result(distinct: true).order("created_at DESC")
     @ideas = @ideas.filter_by_student_id(params[:student_id]) if params[:student_id].present?
+    @ideas = @ideas.filter_by_realm(params[:realm_id]) if params[:realm_id].present?
+    @realms = Realm.all
   end
 
   # GET /ideas/1 or /ideas/1.json

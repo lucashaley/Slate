@@ -7,4 +7,5 @@ class Idea < ApplicationRecord
   validates :title, :content, presence: true
 
   scope :filter_by_student_id, -> (student_id) { where student_id: student_id }
+  scope :filter_by_realm, -> (realm_id) {joins(:ideas_realms).where('ideas_realms.realm_id = ?', realm_id)}
 end
