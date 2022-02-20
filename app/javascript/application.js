@@ -6,3 +6,5 @@ import "controllers"
 //= require popper
 //= require bootstrap-sprockets
 
+import "chartkick"
+import "Chart.bundle"

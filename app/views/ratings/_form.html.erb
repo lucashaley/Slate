@@ -1,0 +1,23 @@
+<%= turbo_frame_tag "new_rating", target: "_top" do %>
+<div class="d-grid gap-2">
+  <%= form_with model:[ @idea, @idea.ratings.build ] do |form| %>
+    <div class="vstack gap-2 mx-auto">
+      <label for="impactRange" class="form-label">Impact</label>
+      <p class="fw-lighter small">How much do you think this will change the world?</p>
+      <%= form.range_field :impact, min: -5, max: 5, class: "form-range", id: "impactRange" %>
+      <div class="d-flex fw-lighter small">
+        <div class="w-50">-5</div>
+        <div class="w-50 text-end">5</div>
+      </div>
+      <hr>
+      <label for="viabilityRange" class="form-label">Viability</label>
+      <p class="fw-lighter small">How possible do you think this idea is?</p>
+      <%= form.range_field :viability, min: -5, max: 5, class: "form-range", id: "viabilityRange" %>
+      <div>
+        <%= form.hidden_field :student_id, value: current_student %>
+      </div>
+      <%= form.submit "I'm being responsible", class: "btn btn-large btn-primary" %>
+    </div>
+  <% end %>
+</div>
+<% end %>

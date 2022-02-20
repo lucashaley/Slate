@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # resources :comments
   resources :ideas do
     resources :comments
+    resources :ratings
   end
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

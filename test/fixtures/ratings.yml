@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  impact: 1
+  viability: 1
+  idea: one
+  user: one
+
+two:
+  impact: 1
+  viability: 1
+  idea: two
+  user: two

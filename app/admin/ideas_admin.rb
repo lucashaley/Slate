@@ -38,6 +38,10 @@ Trestle.resource(:ideas) do
       table CommentsAdmin.table, collection: idea.comments
     end
 
+    tab :ratings do
+      table RatingsAdmin.table, collection: idea.ratings
+    end
+
     sidebar do
       static_field :updated_at
     end

@@ -15,6 +15,7 @@ class IdeasController < ApplicationController
   # GET /ideas/1 or /ideas/1.json
   def show
     # @comment = Comment.new
+    @ratings_data = @idea.ratings.collect{ |r| [r.impact, r.viability] }
   end
 
   # GET /ideas/new
@@ -72,6 +73,6 @@ class IdeasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def idea_params
-      params.require(:idea).permit(:title, :content, :student_id, realm_ids:[], comment_ids:[])
+      params.require(:idea).permit(:title, :content, :student_id, realm_ids:[], comment_ids:[], rating_ids:[])
     end
 end

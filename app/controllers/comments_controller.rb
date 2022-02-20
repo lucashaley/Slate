@@ -21,18 +21,24 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @idea = Idea.find(params[:idea_id])
+    @user = User.find_by student_id: params[:student_id]
+    @idea = Idea.find params[:idea_id]
     @comment = @idea.comments.create(comment_params)
+
+    # TODO Add back when user model is complete
+    # @comment.user = @user
     # @comment = Comment.new(comment_params)
 
     respond_to do |format|
       if @comment.save
         Rails.logger.debug("Saved!")
+        CommentMailer.with(comment: @comment).new_comment.deliver_later
         format.html { redirect_to idea_url(@idea) }
         format.json { render :show, status: :created, location: @comment }
       else
-        Rails.logger.debug("Saved!")
-        format.html { render :new, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
+        logger.warn "#{@comment.errors.inspect}"
+        format.html { redirect_to idea_url(@idea), status: :unprocessable_entity, notice: "Comment could not be created." }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +48,8 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
+        # format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
+        format.html { redirect_to idea_url(@comment.idea), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }

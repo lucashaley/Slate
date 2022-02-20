@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_08_014524) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_085057) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "student_id"
@@ -33,6 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_08_014524) do
     t.integer "realm_id", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "impact"
+    t.integer "viability"
+    t.integer "student_id"
+    t.integer "idea_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idea_id"], name: "index_ratings_on_idea_id"
+  end
+
   create_table "realms", force: :cascade do |t|
     t.string "title"
     t.string "color"
@@ -47,5 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_08_014524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.integer "student_id"
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "comments", "ideas"
+  add_foreign_key "ratings", "ideas"
 end

@@ -1,7 +1,12 @@
 <p style="color: green"><%= notice %></p>
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5">
-
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-last">
+    <% if current_student!=@idea.student_id %>
+    <div>
+      <h1>Rating</h1>
+      <%= render 'ratings/form' %>
+    </div>
+    <% end %>
     <div class="d-flex">
       <div class="me-auto">
         <h1>Comments</h1>
@@ -35,6 +40,9 @@
     <div class="hstack gap-2 mx-auto">
       <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg w-100" %>
       <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
+    </div>
+    <div>
+      <%= scatter_chart @ratings_data, xtitle: "Impact", ytitle: "Viability", min: -5, max: 5, xmin: -5, xmax: 5, height: "500px", empty: "No data" %>
     </div>
     <% end %>
   </div>
