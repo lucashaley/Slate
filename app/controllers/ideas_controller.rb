@@ -10,6 +10,12 @@ class IdeasController < ApplicationController
     @ideas = @ideas.filter_by_student_id(params[:student_id]) if params[:student_id].present?
     @ideas = @ideas.filter_by_realm(params[:realm_id]) if params[:realm_id].present?
     @realms = Realm.all
+
+   #  @filterrific = initialize_filterrific(
+   #   Idea,
+   #   params[:filterrific]
+   # ) or return
+   # @ideas = @filterrific.find.page(params[:page])
   end
 
   # GET /ideas/1 or /ideas/1.json

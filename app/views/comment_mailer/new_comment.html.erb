@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF8' http-equiv="content-type" />
+  </head>
+  <body>
+    <h1>New Comment!</h1>
+    <p>
+      You have a new comment on Slate for your idea <strong><%= @comment.idea.title %></strong>.
+    </p>
+    <p>
+      <%= link_to 'Check it out!', idea_url(@comment.idea) %>
+    </p>
+  </body>
+</html>
