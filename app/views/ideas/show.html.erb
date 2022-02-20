@@ -1,18 +1,20 @@
 <p style="color: green"><%= notice %></p>
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5">
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-last">
-    <h1>Rating</h1>
-    <% if @show_ratings_form %>
-    <div>
-      <%= render 'ratings/form' %>
-    </div>
-    <% end %>
-    <% if @has_rated %>
-    <div>
-      You have already rated this idea:
-      <div>Impact: <%= @idea.ratings.find_by_student_id(current_student).impact %></div>
-      <div>Viability: <%= @idea.ratings.find_by_student_id(current_student).viability %></div>
-    </div>
+    <% unless @is_owner %>
+      <h1>Rating</h1>
+      <% unless @has_rated %>
+      <div>
+        <%= render 'ratings/form' %>
+      </div>
+      <% end %>
+      <% if @has_rated %>
+      <div>
+        You have already rated this idea:
+        <div>Impact: <%= @idea.ratings.find_by_student_id(current_student).impact %></div>
+        <div>Viability: <%= @idea.ratings.find_by_student_id(current_student).viability %></div>
+      </div>
+      <% end %>
     <% end %>
     <div class="d-flex">
       <div class="me-auto">
