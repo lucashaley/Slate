@@ -51,6 +51,7 @@
       <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
     </div>
     <div>
+      <h2>Ratings</h2>
       <%= scatter_chart @ratings_data, xtitle: "Impact", ytitle: "Viability", min: -5, max: 5, xmin: -5, xmax: 5, height: "500px", empty: "No data" %>
     </div>
     <% end %>
