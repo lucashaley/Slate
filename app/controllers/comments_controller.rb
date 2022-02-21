@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @user = User.find_by student_id: params[:student_id]
+    @user = User.find_by student_number: params[:student_number]
     @idea = Idea.find params[:idea_id]
     @comment = @idea.comments.create(comment_params)
 
@@ -76,6 +76,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:content, :student_id, :idea_id)
+      params.require(:comment).permit(:content, :student_number, :idea_id)
     end
 end

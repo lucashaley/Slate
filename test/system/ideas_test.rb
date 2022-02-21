@@ -15,7 +15,7 @@ class IdeasTest < ApplicationSystemTestCase
     click_on "New idea"
 
     fill_in "Content", with: @idea.content
-    fill_in "Student", with: @idea.student_id
+    fill_in "Student", with: @idea.student_number
     fill_in "Title", with: @idea.title
     click_on "Create Idea"
 
@@ -28,7 +28,7 @@ class IdeasTest < ApplicationSystemTestCase
     click_on "Edit this idea", match: :first
 
     fill_in "Content", with: @idea.content
-    fill_in "Student", with: @idea.student_id
+    fill_in "Student", with: @idea.student_number
     fill_in "Title", with: @idea.title
     click_on "Update Idea"
 

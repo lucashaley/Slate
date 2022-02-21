@@ -1,15 +1,15 @@
 module SessionsHelper
-  def log_in(student_id)
-    session[:student_id] = student_id
+  def log_in(student_number)
+    session[:student_number] = student_number
   end
 
   def log_out
-    session.delete(:student_id)
+    session.delete(:student_number)
     @current_student = nil
   end
 
   def current_student
-    @current_student ||= session[:student_id]
+    @current_student ||= session[:student_number]
   end
 
   def logged_in?

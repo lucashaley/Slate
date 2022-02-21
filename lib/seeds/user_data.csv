@@ -1,5 +1,4 @@
-﻿student_id,first_name,last_name,email
-1000,Lucas,Haley,L.Haley@massey.ac.nz
+student_number,first_name,last_name,email
 16063460,Riley,Cooper,amme41@gmail.com
 17161571,Callum,McSorley,mcsorleycallum@gmail.com
 16375713,Rhianna,Maxwell,rhiannamaxwell@gmail.com
@@ -102,3 +101,4 @@
 1003,Jeremy,Macey,J.Macey@massey.ac.nz
 1004,Jani,Wilson,Jani.Wilson@massey.ac.nz
 1005,Erica,Sklenars,e.sklenars@massey.ac.nz
+1000,Lucas,Haley,L.Haley@massey.ac.nz

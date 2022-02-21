@@ -3,5 +3,5 @@ class Comment < ApplicationRecord
   # belongs_to :user
   belongs_to :idea
 
-  validates :content, :student_id, presence: true
+  validates :content, :student_number, presence: true
 end

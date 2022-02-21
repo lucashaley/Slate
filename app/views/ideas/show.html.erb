@@ -11,8 +11,8 @@
       <% if @has_rated %>
       <div>
         You have already rated this idea:
-        <div>Impact: <%= @idea.ratings.find_by_student_id(current_student).impact %></div>
-        <div>Viability: <%= @idea.ratings.find_by_student_id(current_student).viability %></div>
+        <div>Impact: <%= @idea.ratings.find_by_student_number(current_student).impact %></div>
+        <div>Viability: <%= @idea.ratings.find_by_student_number(current_student).viability %></div>
       </div>
       <% end %>
     <% end %>
@@ -45,7 +45,7 @@
       <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
     <% end %>
     <hr />
-    <% if current_student == @idea.student_id.to_s %>
+    <% if current_student == @idea.student_number.to_s %>
     <div class="hstack gap-2 mx-auto">
       <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg w-100" %>
       <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>

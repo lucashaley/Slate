@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    log_in params[:session][:student_id]
+    log_in params[:session][:student_number]
     redirect_to root_path
   end
 
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def session_params
-      params.require(:session).permit(:student_id)
+      params.require(:session).permit(:student_number)
     end
 end

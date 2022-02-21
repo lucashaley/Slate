@@ -2,10 +2,10 @@
 
 one:
   content: MyText
-  student_id: 1
+  student_number: 1
   idea: one
 
 two:
   content: MyText
-  student_id: 1
+  student_number: 1
   idea: two

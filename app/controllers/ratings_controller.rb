@@ -8,7 +8,7 @@ class RatingsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @user = User.find_by student_id: params[:student_id]
+    @user = User.find_by student_number: params[:student_number]
     @idea = Idea.find params[:idea_id]
     @rating = @idea.ratings.create(rating_params)
 
@@ -48,6 +48,6 @@ class RatingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rating_params
-      params.require(:rating).permit(:impact, :viability, :student_id, :idea_id)
+      params.require(:rating).permit(:impact, :viability, :student_number, :idea_id)
     end
 end

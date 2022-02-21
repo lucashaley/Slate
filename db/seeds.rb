@@ -13,7 +13,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'user_data.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   u = User.new
-  u.student_id = row['student_id']
+  u.student_number = row['student_number']
   u.first_name = row['first_name']
   u.last_name = row['last_name']
   u.email = row['email']

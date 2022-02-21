@@ -9,12 +9,12 @@ class Idea < ApplicationRecord
   accepts_nested_attributes_for :ratings, :allow_destroy => true
 
   validates :title, :content, presence: true
-  validates :email, :first_name, :last_name, :student_id, presence: :true
-  validates :student_id, numericality: :true
+  validates :email, :first_name, :last_name, :student_number, presence: :true
+  validates :student_number, numericality: :true
 
   scope :search_query, -> (query) {}
   scope :sorted_by, -> {}
-  scope :filter_by_student_id, -> (student_id) { where student_id: student_id }
+  scope :filter_by_student_number, -> (student_number) { where student_number: student_number }
   scope :filter_by_realm, -> (realm_id) {joins(:ideas_realms).where('ideas_realms.realm_id = ?', realm_id)}
 
 
@@ -23,7 +23,7 @@ class Idea < ApplicationRecord
   #   available_filters: [
   #     :sorted_by,
   #     :search_query,
-  #     :filter_by_student_id,
+  #     :filter_by_student_number,
   #     :filter_by_realm
   #   ]
   # )
