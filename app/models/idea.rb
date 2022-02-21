@@ -9,7 +9,6 @@ class Idea < ApplicationRecord
   accepts_nested_attributes_for :ratings, :allow_destroy => true
 
   validates :title, :content, presence: true
-  validates :email, :first_name, :last_name, :student_number, presence: :true
   validates :student_number, numericality: :true
 
   scope :search_query, -> (query) {}
