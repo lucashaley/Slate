@@ -31,7 +31,7 @@
           <% else %>
           <div>
             <%= form_for(:session, url: login_path, class: "d-flex") do |form| %>
-              <%= form.text_field :student_number, class: 'form-control me-2',  'placeholder': "Student ID", 'aria-label': "Student ID", 'type': "number" %>
+              <%= form.text_field :student_number, class: 'form-control me-2',  'placeholder': "Student Number", 'aria-label': "Student Number", 'type': "number" %>
               <%= form.submit "Log in", class: "btn btn-primary" %>
             <% end %>
           </div>
