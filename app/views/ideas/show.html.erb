@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5">
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-last">
+    <% if Rails.configuration.x.slate.is_accepting_ratings %>
     <% unless @is_owner || !logged_in? %>
       <h1>Rating</h1>
       <% unless @has_rated %>
@@ -16,6 +17,8 @@
       </div>
       <% end %>
     <% end %>
+    <% end %>
+    <% if Rails.configuration.x.slate.is_accepting_comments %>
     <div class="d-flex">
       <div class="me-auto">
         <h1>Comments</h1>
@@ -32,7 +35,7 @@
       <%= render @idea.comments, content_type: "text/html" %>
     </ul>
   </div>
-
+    <% end %>
   <div class="col col-md-12 col-lg-8 bg-light">
     <div class="d-grid gap-2 mt-3">
       <%= link_to "Back to ideas", ideas_path, class: "btn btn-outline-primary btn-lg" %>
@@ -50,10 +53,12 @@
       <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg w-100" %>
       <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
     </div>
+    <% if Rails.configuration.x.slate.is_accepting_ratings %>
     <div>
       <h2>Ratings</h2>
       <%= scatter_chart @ratings_data, xtitle: "Impact", ytitle: "Viability", min: -5, max: 5, xmin: -5, xmax: 5, height: "500px", empty: "No data" %>
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>

@@ -90,4 +90,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Slate config
+  config.x.slate.is_accepting_ideas = true
+  config.x.slate.is_accepting_comments = true
+  config.x.slate.is_accepting_ratings = false
+  config.x.slate.is_accepting_pitches = false
+  config.x.slate.is_accepting_projects = false
 end

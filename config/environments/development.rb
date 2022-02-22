@@ -90,4 +90,11 @@ Rails.application.configure do
     :authentication       => "login",
     :enable_starttls_auto => true
   }
+
+  # Slate config
+  config.x.slate.is_accepting_ideas = true
+  config.x.slate.is_accepting_comments = true
+  config.x.slate.is_accepting_ratings = true
+  config.x.slate.is_accepting_pitches = true
+  config.x.slate.is_accepting_projects = true
 end
