@@ -15,7 +15,7 @@ Trestle.resource(:ideas) do
     column :realms, format: :tags, class: "hidden-xs" do |idea|
       idea.realms.map(&:title)
     end
-    column :student_id
+    column :student_number
     column :created_at, align: :right
     actions
   end
