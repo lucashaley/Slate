@@ -1,0 +1,48 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex" href="/">
+      <i class="bi bi-lightbulb" style="color: orange;"></i>
+      <%# bootstrap_icon "lightbulb-fill", width: 30, height: 30, fill: "#FFCC00", transform: "rotate(15, 15, 60)", class:"d-inline-block align-text-top" %>
+      SLATE
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if Rails.configuration.x.slate.is_accepting_ideas %>
+        <li class="nav-item">
+          <%= link_to "Ideas", :ideas, class: "nav-link active" %>
+        </li>
+        <% end %>
+        <% if Rails.configuration.x.slate.is_accepting_pitches %>
+        <li class="nav-item">
+          <%= link_to "Pitches", :ideas, class: "nav-link" %>
+        </li>
+        <% end %>
+        <% if Rails.configuration.x.slate.is_accepting_projects %>
+        <li class="nav-item">
+          <%= link_to "Projects", :ideas, class: "nav-link" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="d-flex">
+      <% if logged_in? %>
+      <div>
+        <span class="text-secondary">Current student: <%= current_student -%></span>
+        <%= link_to "Log out", logout_path, class: "btn btn-outline-warning btn-sm" %>
+      </div>
+      <% else %>
+      <div>
+        <%= form_for(:session, url: login_path, class: "d-flex") do |form| %>
+          <%= form.text_field :student_number, class: 'form-control me-2',  'placeholder': "Student Number", 'aria-label': "Student Number", 'type': "number" %>
+          <%= form.submit "Log in", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</nav>

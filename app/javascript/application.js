@@ -8,3 +8,6 @@ import "controllers"
 
 import "chartkick"
 import "Chart.bundle"
+
+// This caused hotwire to fail!
+// import 'bootstrap-icons/font/bootstrap-icons.css'

@@ -12,36 +12,8 @@
   </head>
 
   <body>
-    <header>
-
-    </header>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex" href="/">
-          <div class="mx-6" style="min-width: 30px"><%= bootstrap_icon "lightbulb-fill", width: 30, height: 30, fill: "#FFCC00", transform: "rotate(15, 15, 60)" %></div>
-          <div class="mx-3">SLATE</div>
-        </a>
-
-        <div class="d-flex">
-          <% if logged_in? %>
-          <div>
-            <span class="text-secondary">Current student: <%= current_student -%></span>
-            <%= link_to "Log out", logout_path, class: "btn btn-outline-warning btn-sm" %>
-          </div>
-          <% else %>
-          <div>
-            <%= form_for(:session, url: login_path, class: "d-flex") do |form| %>
-              <%= form.text_field :student_number, class: 'form-control me-2',  'placeholder': "Student Number", 'aria-label': "Student Number", 'type': "number" %>
-              <%= form.submit "Log in", class: "btn btn-primary" %>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </nav>
-
+    <%= render partial: "layouts/navbar" %>
 
     <%= yield %>
-
   </body>
 </html>
