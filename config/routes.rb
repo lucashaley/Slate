@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :realms
   resources :statuses
   # resources :comments
-  resources :ideas do
-    resources :comments
-    resources :ratings
+  scope "(:locale)", locale: /en|mi/ do
+    resources :ideas do
+      resources :comments
+      resources :ratings
+    end
   end
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
