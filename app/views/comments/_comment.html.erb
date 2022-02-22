@@ -1,4 +1,4 @@
-<li class="list-group-item d-flex">
+<li class="list-group-item d-flex <%= 'bg-light' if comment.student_number == comment.idea.student_number %>">
   <div class="me-auto">
     <%= comment.content.to_s.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe -%>
   </div>
