@@ -33,12 +33,12 @@ class CommentsController < ApplicationController
       if @comment.save
         Rails.logger.debug("Saved!")
         CommentMailer.with(comment: @comment).new_comment.deliver_later
-        format.html { redirect_to idea_url(@idea) }
+        format.html { redirect_to ideas_url(@idea), notice: "Idea was successfully created! Now do another!" }
         format.json { render :show, status: :created, location: @comment }
       else
         # format.html { render :new, status: :unprocessable_entity }
         logger.warn "#{@comment.errors.inspect}"
-        format.html { redirect_to idea_url(@idea), status: :unprocessable_entity, notice: "Comment could not be created." }
+        format.html { redirect_to ideas_url(@idea), status: :unprocessable_entity, notice: "Comment could not be created." }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
