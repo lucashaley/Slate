@@ -2,9 +2,9 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-//= require jquery3
 //= require popper
-//= require bootstrap-sprockets
+//= require jquery3
+//= require bootstrap
 
 import "chartkick"
 import "Chart.bundle"
