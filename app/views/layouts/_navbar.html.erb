@@ -23,21 +23,19 @@
         </li>
         <% end %>
       </ul>
-      <div class="d-flex">
-        <% if logged_in? %>
-        <div>
-          <span class="text-secondary">Current student: <%= current_student -%></span>
-          <%= link_to "Log out", logout_path, class: "btn btn-outline-warning btn-sm" %>
-        </div>
-        <% else %>
-        <div>
-          <%= form_for(:session, url: login_path, class: "d-flex") do |form| %>
-            <%= form.text_field :student_number, class: 'form-control me-2',  'placeholder': "Student Number", 'aria-label': "Student Number", 'type': "number" %>
-            <%= form.submit "Log in", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+      <% if logged_in? %>
+      <div class="navbar-text">
+        <span class="text-secondary">Current student: <%= current_student -%></span>
+        <%= link_to "Log out", logout_path, class: "btn btn-outline-warning btn-sm" %>
+      </div>
+      <% else %>
+      <div class="navbar-text">
+        <%= form_for(:session, url: login_path, class: "d-flex") do |form| %>
+          <%= form.text_field :student_number, class: 'form-control form-control-sm me-2',  'placeholder': "Student Number", 'aria-label': "Student Number", 'type': "number" %>
+          <%= form.submit "Log in", class: "btn btn-primary btn-sm" %>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </nav>
