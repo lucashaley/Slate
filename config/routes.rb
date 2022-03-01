@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   get 'sessions/new'
-  resources :realms
-  resources :statuses
+  # resources :realms
+  # resources :statuses
   # resources :comments
   scope "(:locale)", locale: /en|mi/ do
     resources :ideas do
+      member do
+        post 'toggle_bookmark', to: "ideas#toggle_bookmark"
+      end
       resources :comments
       resources :ratings
     end

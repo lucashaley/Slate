@@ -74,6 +74,11 @@ class IdeasController < ApplicationController
     end
   end
 
+  def toggle_bookmark
+    @idea = Idea.find_by(id: params[:id])
+    current_user.favorited?(@idea) ? current_user.unfavorite(@idea) : current_user.favorite(@idea)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea

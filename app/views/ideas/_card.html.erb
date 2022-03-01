@@ -3,7 +3,18 @@
 <div class="card h-100">
   <div class="card-header d-flex" style="height: 100px;">
     <h5 class="me-auto"><%= truncate(idea.title, length:60) %></h5>
-    <h5><span class="badge bg-info"><%= idea.comments.count -%></span></h5>
+    <% if logged_in? %>
+    <h5>
+      <%= button_to toggle_bookmark_idea_path(idea), remote: true, class: "btn btn-outline-primary btn-sm" do %>
+      <% if current_user.favorited?(idea) %>
+      <i class="bi bi-bookmark-check-fill"></i>
+      <% else %>
+      <i class="bi bi-bookmark-plus"></i>
+      <% end %>
+      <% end %>
+    </h5>
+    <% end %>
+    <!-- <h5><span class="badge bg-info"><%= idea.comments.count -%></span></h5> -->
   </div>
   <div class="card-body">
     <p class="card-text text-left" style="height: 100px;">

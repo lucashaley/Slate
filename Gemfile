@@ -81,6 +81,9 @@ gem 'activerecord_reset_pk_sequence'
 
 gem 'mail'
 
+# https://github.com/jonhue/acts_as_favoritor
+gem 'acts_as_favoritor'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
