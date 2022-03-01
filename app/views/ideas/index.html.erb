@@ -7,7 +7,50 @@
   <% if logged_in? %>
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-md-first order-lg-last">
     <h1>Add New Idea</h1>
-    <%= turbo_frame_tag "new_idea", src: new_idea_path, target: "_top" %>
+    <%# turbo_frame_tag "new_idea", src: new_idea_path, target: "_top" %>
+    <%= form_with(model: @idea) do |form| %>
+      <% if @idea.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+          <ul>
+            <% @idea.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-floating mb-2">
+        <%= form.text_field :title, class: "form-control form-control-lg", id: "titleField" %>
+        <label for="titleField" class="form-label">Title</label>
+      </div>
+      <div class="form-floating">
+        <%= form.text_area :content, class: "form-control form-control-lg", id: "contentArea", style:"height: 140px" %>
+        <label for="contentArea" class="form-label">Content</label>
+      </div>
+      <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0 col-form-label-sm">Forms</legend>
+        <div class="col-sm-10">
+        <%= form.collection_check_boxes :realm_ids, Realm.all, :id, :title do |realm| %>
+          <div class="form-check">
+            <%= realm.check_box(class: "form-check-input") %>
+            <span class="badge text-black"><%= realm.label(class: "form-check-label") %></span>
+          </div>
+        <% end %>
+        </div>
+      </fieldset>
+
+      <div>
+        <%= form.hidden_field :student_number, value: current_student %>
+      </div>
+
+
+      <div class="d-grid">
+        <%= form.submit "Submit", class: "btn btn-large btn-primary" %>
+      </div>
+    <% end %>
+
   </div>
   <% end %>
   <div class="col col-md-12 col-lg-8 bg-light">
