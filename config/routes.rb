@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|mi/ do
     resources :ideas do
       member do
-        post 'toggle_bookmark', to: "ideas#toggle_bookmark"
+        post 'toggle_bookmark', to: "ideas#toggle_bookmark", defaults: { format: :js }
       end
       resources :comments
       resources :ratings
