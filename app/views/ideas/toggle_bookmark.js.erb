@@ -1,7 +1,10 @@
-// var ideaId = '<%= @idea.id %>'
-// function toggleBookmarkButton(ideaId, innerHTML) {
-//   let bookmarkButton = document.querySelector(`.like-icon[data-id='${cocktailId}']`)
-//   bookmarkButton.classList.toggle('red');
-//   console.log(ideaId)
-// }
-// toggleBookmarkButton(ideaId);
+const enabled = 'bi-bookmark-check-fill'
+const disabled = 'bi-bookmark-plus'
+var ideaId = '<%= @idea.id %>'
+function toggleBookmarkButton(ideaId, innerHTML) {
+  let bookmarkButton = document.querySelector(`.bookmark-icon[data-id='${ideaId}']`)
+  bookmarkButton.classList.toggle(enabled);
+  bookmarkButton.classList.toggle(disabled);
+  console.log(ideaId)
+}
+toggleBookmarkButton(ideaId);

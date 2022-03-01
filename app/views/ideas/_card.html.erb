@@ -1,15 +1,15 @@
 
 <div class="col">
-<div class="card h-100">
+<div class="card h-100" data-id="<%= idea.id %>">
   <div class="card-header d-flex" style="height: 100px;">
     <h5 class="me-auto"><%= truncate(idea.title, length:60) %></h5>
     <% if logged_in? %>
     <h5>
       <%= button_to toggle_bookmark_idea_path(idea), remote: true, class: "btn btn-outline-primary btn-sm" do %>
       <% if current_user.favorited?(idea) %>
-      <i class="bi bi-bookmark-check-fill"></i>
+      <i class="bi bi-bookmark-check-fill bookmark-icon" data-id="<%= idea.id %>"></i>
       <% else %>
-      <i class="bi bi-bookmark-plus"></i>
+      <i class="bi bi-bookmark-plus bookmark-icon" data-id="<%= idea.id %>"></i>
       <% end %>
       <% end %>
     </h5>
