@@ -5,7 +5,7 @@
     <h5 class="me-auto"><%= truncate(idea.title, length:60) %></h5>
     <% if logged_in? %>
     <h5>
-      <%= button_to toggle_bookmark_idea_path(idea), remote: true, class: "btn btn-outline-primary btn-sm" do %>
+      <%= button_to toggle_bookmark_idea_path(idea), format: :js, remote: true, class: "btn btn-outline-primary btn-sm" do %>
       <% if current_user.favorited?(idea) %>
       <i class="bi bi-bookmark-check-fill bookmark-icon" data-id="<%= idea.id %>"></i>
       <% else %>
