@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_action :set_rating, only: %i[ update destroy ]
+  before_action :set_rating, only: %i[update destroy]
 
   # GET /comments/new
   def new
@@ -24,7 +24,9 @@ class RatingsController < ApplicationController
       else
         # format.html { render :new, status: :unprocessable_entity }
         logger.warn "#{@rating.errors.inspect}"
-        format.html { redirect_to idea_url(@idea), status: :unprocessable_entity, notice: "Rating could not be created." }
+        format.html {
+          redirect_to idea_url(@idea), status: :unprocessable_entity, notice: "Rating could not be created."
+        }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
@@ -41,13 +43,14 @@ class RatingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rating
-      @rating = Rating.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def rating_params
-      params.require(:rating).permit(:impact, :viability, :student_number, :idea_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_rating
+    @rating = Rating.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def rating_params
+    params.require(:rating).permit(:impact, :viability, :student_number, :idea_id)
+  end
 end

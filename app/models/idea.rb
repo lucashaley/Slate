@@ -11,10 +11,10 @@ class Idea < ApplicationRecord
   validates :title, :content, presence: true
   validates :student_number, numericality: :true
 
-  scope :search_query, -> (query) {}
+  scope :search_query, ->(query) {}
   scope :sorted_by, -> {}
-  scope :filter_by_student_number, -> (student_number) { where student_number: student_number }
-  scope :filter_by_realm, -> (realm_id) {joins(:ideas_realms).where('ideas_realms.realm_id = ?', realm_id)}
+  scope :filter_by_student_number, ->(student_number) { where student_number: student_number }
+  scope :filter_by_realm, ->(realm_id) { joins(:ideas_realms).where('ideas_realms.realm_id = ?', realm_id) }
   # scope :filter_by_favorite, -> (user_id) { joins(:favorites).where('favorites.favoritor_id = 1000') }
 
   acts_as_favoritable

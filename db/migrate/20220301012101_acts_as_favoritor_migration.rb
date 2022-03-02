@@ -20,7 +20,7 @@ class ActsAsFavoritorMigration < ActiveRecord::Migration[7.0]
               name: 'fk_favoritables'
     add_index :favorites,
               ['favoritable_type', 'favoritable_id', 'favoritor_type',
-              'favoritor_id', 'scope'],
+               'favoritor_id', 'scope'],
               name: 'uniq_favorites__and_favoritables', unique: true
   end
 

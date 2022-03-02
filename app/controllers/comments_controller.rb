@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[show edit update destroy]
 
   # GET /comments or /comments.json
   def index
@@ -38,7 +38,9 @@ class CommentsController < ApplicationController
       else
         # format.html { render :new, status: :unprocessable_entity }
         logger.warn "#{@comment.errors.inspect}"
-        format.html { redirect_to ideas_url(@idea), status: :unprocessable_entity, notice: "Comment could not be created." }
+        format.html {
+          redirect_to ideas_url(@idea), status: :unprocessable_entity, notice: "Comment could not be created."
+        }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -69,13 +71,14 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:content, :student_number, :idea_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:content, :student_number, :idea_id)
+  end
 end

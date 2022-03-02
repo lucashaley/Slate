@@ -1,5 +1,5 @@
 class RealmsController < ApplicationController
-  before_action :set_realm, only: %i[ show edit update destroy ]
+  before_action :set_realm, only: %i[show edit update destroy]
 
   # GET /realms or /realms.json
   def index
@@ -58,13 +58,14 @@ class RealmsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_realm
-      @realm = Realm.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def realm_params
-      params.require(:realm).permit(:title, :color)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_realm
+    @realm = Realm.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def realm_params
+    params.require(:realm).permit(:title, :color)
+  end
 end

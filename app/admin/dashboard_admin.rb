@@ -5,7 +5,6 @@ Trestle.admin(:dashboard) do
 
   controller do
     def index
-
     end
   end
 end
