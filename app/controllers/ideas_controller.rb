@@ -76,7 +76,18 @@ class IdeasController < ApplicationController
 
   def toggle_bookmark
     @idea = Idea.find_by(id: params[:id])
-    current_user.favorited?(@idea) ? current_user.unfavorite(@idea) : current_user.favorite(@idea)
+
+    if current_user.favorited?(@idea)
+      current_user.unfavorite(@idea)
+      @icon = "bi-bookmark-plus"
+    else
+      current_user.favorite(@idea)
+      @icon = "bi-bookmark-check-fill"
+    end
+
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private

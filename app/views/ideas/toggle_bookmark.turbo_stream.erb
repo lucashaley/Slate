@@ -1,0 +1,5 @@
+<%= turbo_stream.replace @idea do %>
+  <%= turbo_frame_tag @idea do %>
+    <i class="bi <%= @icon %> bookmark-icon ml-2"></i>
+  <% end %>
+<% end %>
