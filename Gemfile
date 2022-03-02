@@ -86,6 +86,8 @@ gem 'acts_as_favoritor'
 
 # https://rubocop.org/
 gem 'rubocop', require: false
+# https://github.com/rubocop/rubocop-rails
+gem 'rubocop-rails', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
