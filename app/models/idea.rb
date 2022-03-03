@@ -19,7 +19,6 @@ class Idea < ApplicationRecord
   scope :filter_by_realm, ->(realm_id) { joins(:ideas_realms).where('ideas_realms.realm_id = ?', realm_id) }
   # scope :filter_by_favorite, -> (user_id) { joins(:favorites).where('favorites.favoritor_id = 1000') }
 
-  acts_as_favoritable
 
   # filterrific(
   #   default_filter_params: { sorted_by: 'created_at_desc' },
