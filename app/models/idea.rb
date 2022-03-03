@@ -4,9 +4,11 @@ class Idea < ApplicationRecord
   has_and_belongs_to_many :realms
   has_many :comments, inverse_of: :idea, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   accepts_nested_attributes_for :comments, :allow_destroy => true
   accepts_nested_attributes_for :ratings, :allow_destroy => true
+  accepts_nested_attributes_for :bookmarks, allow_destroy: true
 
   validates :title, :content, presence: true
   validates :student_number, numericality: :true

@@ -82,7 +82,7 @@ gem 'activerecord_reset_pk_sequence'
 gem 'mail'
 
 # https://github.com/jonhue/acts_as_favoritor
-gem 'acts_as_favoritor'
+# gem 'acts_as_favoritor' # over engineered, broken
 
 # https://rubocop.org/
 gem 'rubocop', require: false
