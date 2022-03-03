@@ -72,6 +72,7 @@ gem 'bootstrap-icons-helper'
 
 # https://github.com/jhund/filterrific
 # gem 'filterrific'
+# gem 'filterrific', git: 'https://github.com/lucashaley/filterrific'
 
 # https://github.com/ankane/chartkick
 gem 'chartkick'
@@ -88,6 +89,9 @@ gem 'mail'
 gem 'rubocop', require: false
 # https://github.com/rubocop/rubocop-rails
 gem 'rubocop-rails', require: false
+
+# https://github.com/pmviva/bookmark_system
+# gem 'bookmark_system', '~> 0.2.0' # Doesn't work with 7.0.1
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

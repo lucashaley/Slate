@@ -9,15 +9,9 @@ class IdeasController < ApplicationController
     @ideas = @q.result(distinct: true).order("created_at DESC")
     @ideas = @ideas.filter_by_student_number(params[:student_number]) if params[:student_number].present?
     @ideas = @ideas.filter_by_realm(params[:realm_id]) if params[:realm_id].present?
-    @ideas = @ideas.merge(User.find(session[:user_id]).favorites_by_type('Idea')) if params[:favorite].present?
-    @realms = Realm.all
-    # @ideas = Favorite.for_favoritor(User.find(session[:user_id])).merge(@ideas) if session[:user_id]
+    @ideas = @ideas.filter_by_user(current_user) if params[:bookmark].present?
 
-    #  @filterrific = initialize_filterrific(
-    #   Idea,
-    #   params[:filterrific]
-    # ) or return
-    # @ideas = @filterrific.find.page(params[:page])
+    @realms = Realm.all
   end
 
   # GET /ideas/1 or /ideas/1.json
