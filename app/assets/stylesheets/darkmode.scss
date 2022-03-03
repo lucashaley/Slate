@@ -16,6 +16,9 @@
   .card {
     background-color: #444 !important;
   }
+  .list-group-item {
+    background-color: #111 !important;
+  }
 }
 @media (prefers-color-scheme: dark) {
   @include dark;
