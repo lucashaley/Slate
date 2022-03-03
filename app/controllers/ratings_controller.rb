@@ -12,21 +12,21 @@ class RatingsController < ApplicationController
     @idea = Idea.find params[:idea_id]
     @rating = @idea.ratings.create(rating_params)
 
-    # TODO Add back when user model is complete
+    # TODO: Add back when user model is complete
     # @comment.user = @user
     # @comment = Comment.new(comment_params)
 
     respond_to do |format|
       if @rating.save
-        Rails.logger.debug("Saved!")
+        Rails.logger.debug('Saved!')
         format.html { redirect_to idea_url(@idea) }
         format.json { render :show, status: :created, location: @comment }
       else
         # format.html { render :new, status: :unprocessable_entity }
-        logger.warn "#{@rating.errors.inspect}"
-        format.html {
-          redirect_to idea_url(@idea), status: :unprocessable_entity, notice: "Rating could not be created."
-        }
+        logger.warn @rating.errors.inspect.to_s
+        format.html do
+          redirect_to idea_url(@idea), status: :unprocessable_entity, notice: 'Rating could not be created.'
+        end
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
@@ -37,7 +37,7 @@ class RatingsController < ApplicationController
     @rating.destroy
 
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: "Rating was successfully destroyed." }
+      format.html { redirect_to ideas_url, notice: 'Rating was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

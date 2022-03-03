@@ -1,6 +1,6 @@
 Trestle.resource(:ideas) do
   menu do
-    item :ideas, icon: "fa fa-star", priority: 2
+    item :ideas, icon: 'fa fa-star', priority: 2
   end
 
   collection do
@@ -12,7 +12,7 @@ Trestle.resource(:ideas) do
   table do
     column :title
     column :content
-    column :realms, format: :tags, class: "hidden-xs" do |idea|
+    column :realms, format: :tags, class: 'hidden-xs' do |idea|
       idea.realms.map(&:title)
     end
     column :student_number
@@ -26,7 +26,7 @@ Trestle.resource(:ideas) do
     tab :idea do
       text_field :title
       text_area :content, rows: 5
-      select :realm_ids, Realm.all, { label: "Realms" }, multiple: true
+      select :realm_ids, Realm.all, { label: 'Realms' }, multiple: true
 
       row do
         col { datetime_field :updated_at }

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   # resources :realms
   # resources :statuses
   # resources :comments
-  scope "(:locale)", locale: /en|mi/ do
+  scope '(:locale)', locale: /en|mi/ do
     resources :ideas do
       member do
-        post 'toggle_bookmark', to: "ideas#toggle_bookmark"
+        post 'toggle_bookmark', to: 'ideas#toggle_bookmark'
       end
       resources :comments
       resources :ratings
@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "ideas#index"
+  root 'ideas#index'
 end

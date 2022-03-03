@@ -7,8 +7,7 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1 or /comments/1.json
-  def show
-  end
+  def show; end
 
   # GET /comments/new
   def new
@@ -16,8 +15,7 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /comments or /comments.json
   def create
@@ -25,22 +23,22 @@ class CommentsController < ApplicationController
     @idea = Idea.find params[:idea_id]
     @comment = @idea.comments.create(comment_params)
 
-    # TODO Add back when user model is complete
+    # TODO: Add back when user model is complete
     # @comment.user = @user
     # @comment = Comment.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        Rails.logger.debug("Saved!")
+        Rails.logger.debug('Saved!')
         CommentMailer.with(comment: @comment).new_comment.deliver_later
-        format.html { redirect_to ideas_url(@idea), notice: "Idea was successfully created! Now do another!" }
+        format.html { redirect_to ideas_url(@idea), notice: 'Idea was successfully created! Now do another!' }
         format.json { render :show, status: :created, location: @comment }
       else
         # format.html { render :new, status: :unprocessable_entity }
-        logger.warn "#{@comment.errors.inspect}"
-        format.html {
-          redirect_to ideas_url(@idea), status: :unprocessable_entity, notice: "Comment could not be created."
-        }
+        logger.warn @comment.errors.inspect.to_s
+        format.html do
+          redirect_to ideas_url(@idea), status: :unprocessable_entity, notice: 'Comment could not be created.'
+        end
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -51,7 +49,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         # format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
-        format.html { redirect_to idea_url(@comment.idea), notice: "Comment was successfully updated." }
+        format.html { redirect_to idea_url(@comment.idea), notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +63,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

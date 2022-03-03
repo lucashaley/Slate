@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      message = "Something went wrong!"
+      message = 'Something went wrong!'
       redirect_to root_path, notice: message
     end
   end

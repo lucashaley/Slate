@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  # TODO add back when user model is complete
+  # TODO: add back when user model is complete
   # belongs_to :user
   belongs_to :idea
 

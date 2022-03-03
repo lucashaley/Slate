@@ -1,6 +1,6 @@
 Trestle.resource(:realms) do
   menu do
-    item :realms, icon: "fa fa-star", priority: 4
+    item :realms, icon: 'fa fa-star', priority: 4
   end
 
   # Customize the table columns shown on the index view.

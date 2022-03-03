@@ -7,8 +7,7 @@ class RealmsController < ApplicationController
   end
 
   # GET /realms/1 or /realms/1.json
-  def show
-  end
+  def show; end
 
   # GET /realms/new
   def new
@@ -16,8 +15,7 @@ class RealmsController < ApplicationController
   end
 
   # GET /realms/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /realms or /realms.json
   def create
@@ -25,7 +23,7 @@ class RealmsController < ApplicationController
 
     respond_to do |format|
       if @realm.save
-        format.html { redirect_to realm_url(@realm), notice: "Realm was successfully created." }
+        format.html { redirect_to realm_url(@realm), notice: 'Realm was successfully created.' }
         format.json { render :show, status: :created, location: @realm }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class RealmsController < ApplicationController
   def update
     respond_to do |format|
       if @realm.update(realm_params)
-        format.html { redirect_to realm_url(@realm), notice: "Realm was successfully updated." }
+        format.html { redirect_to realm_url(@realm), notice: 'Realm was successfully updated.' }
         format.json { render :show, status: :ok, location: @realm }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +50,7 @@ class RealmsController < ApplicationController
     @realm.destroy
 
     respond_to do |format|
-      format.html { redirect_to realms_url, notice: "Realm was successfully destroyed." }
+      format.html { redirect_to realms_url, notice: 'Realm was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

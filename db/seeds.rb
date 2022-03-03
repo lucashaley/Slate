@@ -10,7 +10,7 @@
 require 'csv'
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'user_data.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
 csv.each do |row|
   u = User.new
   u.student_number = row['student_number']

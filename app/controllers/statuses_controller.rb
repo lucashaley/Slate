@@ -7,8 +7,7 @@ class StatusesController < ApplicationController
   end
 
   # GET /statuses/1 or /statuses/1.json
-  def show
-  end
+  def show; end
 
   # GET /statuses/new
   def new
@@ -16,8 +15,7 @@ class StatusesController < ApplicationController
   end
 
   # GET /statuses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /statuses or /statuses.json
   def create
@@ -25,7 +23,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to status_url(@status), notice: "Status was successfully created." }
+        format.html { redirect_to status_url(@status), notice: 'Status was successfully created.' }
         format.json { render :show, status: :created, location: @status }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class StatusesController < ApplicationController
   def update
     respond_to do |format|
       if @status.update(status_params)
-        format.html { redirect_to status_url(@status), notice: "Status was successfully updated." }
+        format.html { redirect_to status_url(@status), notice: 'Status was successfully updated.' }
         format.json { render :show, status: :ok, location: @status }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +50,7 @@ class StatusesController < ApplicationController
     @status.destroy
 
     respond_to do |format|
-      format.html { redirect_to statuses_url, notice: "Status was successfully destroyed." }
+      format.html { redirect_to statuses_url, notice: 'Status was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

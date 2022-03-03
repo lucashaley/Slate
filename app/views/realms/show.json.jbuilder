@@ -1,1 +1,1 @@
-json.partial! "realms/realm", realm: @realm
+json.partial! 'realms/realm', realm: @realm

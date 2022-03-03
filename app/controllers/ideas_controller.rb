@@ -6,7 +6,7 @@ class IdeasController < ApplicationController
     # @ideas = Idea.all
     @idea = Idea.new
     @q = Idea.ransack(params[:q])
-    @ideas = @q.result(distinct: true).order("created_at DESC")
+    @ideas = @q.result(distinct: true).order('created_at DESC')
     @ideas = @ideas.filter_by_student_number(params[:student_number]) if params[:student_number].present?
     @ideas = @ideas.filter_by_realm(params[:realm_id]) if params[:realm_id].present?
     @ideas = @ideas.filter_by_user(current_user) if params[:bookmark].present?
@@ -29,8 +29,7 @@ class IdeasController < ApplicationController
   end
 
   # GET /ideas/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /ideas or /ideas.json
   def create
@@ -38,7 +37,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to ideas_url, notice: "Idea was successfully created! Now do another!" }
+        format.html { redirect_to ideas_url, notice: 'Idea was successfully created! Now do another!' }
         format.json { render :show, status: :created, location: @idea }
       else
         # format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +50,7 @@ class IdeasController < ApplicationController
   def update
     respond_to do |format|
       if @idea.update(idea_params)
-        format.html { redirect_to idea_url(@idea), notice: "Idea was successfully updated." }
+        format.html { redirect_to idea_url(@idea), notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +64,7 @@ class IdeasController < ApplicationController
     @idea.destroy
 
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: "Idea was successfully destroyed." }
+      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -83,10 +82,10 @@ class IdeasController < ApplicationController
 
     if current_user.marks.include? @idea
       current_user.marks.delete(@idea)
-      @icon = "bi-bookmark-plus"
+      @icon = 'bi-bookmark-plus'
     else
       current_user.marks << @idea
-      @icon = "bi-bookmark-check-fill"
+      @icon = 'bi-bookmark-check-fill'
     end
     respond_to do |format|
       format.turbo_stream

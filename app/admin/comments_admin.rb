@@ -1,6 +1,6 @@
 Trestle.resource(:comments) do
   menu do
-    item :comments, icon: "fa fa-star", priority: 3
+    item :comments, icon: 'fa fa-star', priority: 3
   end
 
   # Customize the table columns shown on the index view.
