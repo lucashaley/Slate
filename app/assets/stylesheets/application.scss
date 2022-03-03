@@ -12,7 +12,18 @@
  *
  *= require_tree .
  *= require_self
+ *= require darkmode
  */
+
+ /* Change theme-colors */
+$theme-colors: (
+                primary: #234d7b,
+                secondary: #3b3c3e,
+                success: #1e6111,
+                info:  #00c3d2,
+                warning: #f5e74a,
+                danger: #820410
+                );
 
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.

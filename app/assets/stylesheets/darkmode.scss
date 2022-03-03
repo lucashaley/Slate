@@ -1,0 +1,22 @@
+
+@mixin dark {
+  body, nav, div {
+    color: #ddd;
+    background-color: #000 !important;
+  }
+  h1 {
+    color: #eee;
+  }
+  textarea, input {
+    background-color: #222 !important;
+  }
+  .bg-body {
+    background-color: #111 !important;
+  }
+  .card {
+    background-color: #444 !important;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  @include dark;
+}
