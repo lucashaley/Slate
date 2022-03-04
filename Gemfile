@@ -93,6 +93,9 @@ gem 'rubocop-rails', require: false
 # https://github.com/pmviva/bookmark_system
 # gem 'bookmark_system', '~> 0.2.0' # Doesn't work with 7.0.1
 
+# https://brakemanscanner.org/docs/install/
+# gem "brakeman"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
