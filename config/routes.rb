@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # resources :realms
   # resources :statuses
   # resources :comments
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  get    'logout'  => 'sessions#destroy'
+
   scope '(:locale)', locale: /en|mi/ do
     resources :ideas do
       member do
@@ -11,11 +15,8 @@ Rails.application.routes.draw do
       resources :comments
       resources :ratings
     end
-    get "/:page" => 'static#show'
+    get ':page' => 'static#show'
   end
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  get    'logout'  => 'sessions#destroy'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
