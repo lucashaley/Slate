@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :comments
       resources :ratings
     end
+    get "/:page" => 'static#show'
   end
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

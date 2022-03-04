@@ -7,9 +7,10 @@
 
     <div class="nav">
       <ul class="nav me-auto mb-2 mb-lg-0">
+        <%= link_to "FAQs", "/faq", class: "nav-link" %>
         <% if Rails.configuration.x.slate.is_accepting_ideas %>
         <li class="nav-item">
-          <%= link_to "Ideas", :ideas, class: "nav-link active" %>
+          <%= link_to "Ideas", :ideas, class: "nav-link" %>
         </li>
         <% end %>
         <% if Rails.configuration.x.slate.is_accepting_pitches %>
