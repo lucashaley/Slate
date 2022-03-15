@@ -51,6 +51,8 @@
       <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
     <% end %>
     <hr />
+    <%= mail_to @idea.user.email, "Contact ideator" %>
+    <hr />
     <%# if current_student == @idea.student_number.to_s %>
     <% if current_user == @idea.user %>
     <div class="hstack gap-2 mx-auto">
