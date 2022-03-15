@@ -18,7 +18,8 @@ class IdeasController < ApplicationController
   def show
     # @comment = Comment.new
     @ratings_data = @idea.ratings.collect { |r| [r.impact, r.viability] }
-    @is_owner = current_student.to_i == @idea.student_number
+    # @is_owner = current_student.to_i == @idea.student_number
+    @is_owner = current_user == @idea.user
     @has_rated = @idea.ratings.exists?(student_number: current_student)
     @show_ratings_form = !@is_owner && !@has_rated
   end

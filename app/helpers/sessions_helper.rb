@@ -21,6 +21,7 @@ module SessionsHelper
 
   def logged_in?
     # !current_student.nil?
-    !!session[:student_number]
+    # !!session[:student_number]
+    !current_user.nil?
   end
 end

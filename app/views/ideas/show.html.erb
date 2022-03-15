@@ -2,7 +2,10 @@
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5">
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-last">
     <% if Rails.configuration.x.slate.is_accepting_ratings %>
-    <% unless @is_owner || !logged_in? %>
+    <%= @is_owner %>
+    <%= @is_owner || !logged_in? %>
+    <%= logged_in? && !@is_owner %>
+    <% if logged_in? && !@is_owner %>
       <h1>Rating</h1>
       <% unless @has_rated %>
       <div>
