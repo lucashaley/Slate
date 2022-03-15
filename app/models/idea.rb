@@ -1,6 +1,6 @@
 class Idea < ApplicationRecord
   # TODO: add back when user model is complete
-  # belongs_to :user
+  belongs_to :user
   has_and_belongs_to_many :realms
   has_many :comments, inverse_of: :idea, dependent: :destroy
   has_many :ratings, dependent: :destroy

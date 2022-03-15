@@ -1,0 +1,39 @@
+
+<div class="col">
+<div class="card h-100" data-controller="idea">
+  <div class="card-header d-flex" style="height: 100px;">
+    <h5 class="me-auto"><%= truncate(idea.title, length:60) %></h5>
+    <% if logged_in? %>
+    <h5>
+      <%= button_to toggle_bookmark_idea_path(idea), class: "btn btn-outline-primary btn-sm" do %>
+        <%= turbo_frame_tag idea do %>
+          <% if current_user.marks.include? idea %>
+            <i class="bi bi-bookmark-check-fill bookmark-icon ml-3" id="<%= idea.id %>"></i>
+          <% else %>
+            <i class="bi bi-bookmark-plus bookmark-icon ml-3" id="<%= idea.id %>"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </h5>
+    <% end %>
+  </div>
+    <div class="card-body">
+      <p class="card-text text-left" style="height: 100px;">
+        <%= truncate(idea.content, length: 80) %>
+      </p>
+      <p class="card-text">
+        <% idea.realms.each do |realm| %>
+          <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
+        <% end %>
+      </p>
+    </div>
+    <div class="card-footer text-muted d-grid gap-2">
+      <div class="hstack gap-3">
+        <%= link_to "More…", idea, class: "btn btn-outline-primary btn-sm w-75" %>
+        <div class="vr"></div>
+        <%= link_to idea.comments.count, idea, class: "btn btn-info btn-sm text-white w-25" %>
+      </div>
+      <small>Created by: <%= idea.student_number %> on <%= idea.created_at.strftime("%d/%m/%Y") %></small>
+    </div>
+  </div>
+</div>

@@ -24,7 +24,7 @@
         <h1>Comments</h1>
       </div>
       <div>
-        <h1><span class="badge bg-info"><%= @idea.comments.count -%></span></h1>
+        <h1><span class="badge bg-info"><%= @idea.comments_count -%></span></h1>
       </div>
     </div>
   <% if logged_in? %>
@@ -48,7 +48,8 @@
       <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
     <% end %>
     <hr />
-    <% if current_student == @idea.student_number.to_s %>
+    <%# if current_student == @idea.student_number.to_s %>
+    <% if current_user == @idea.user %>
     <div class="hstack gap-2 mx-auto">
       <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg w-100" %>
       <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
