@@ -19,10 +19,12 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @user = User.find_by student_number: params[:student_number]
+    # @user = User.find_by student_number: params[:student_number]
+
     @idea = Idea.find params[:idea_id]
     @comment = @idea.comments.create(comment_params)
-
+    @comment.user = current_user
+    
     # TODO: Add back when user model is complete
     # @comment.user = @user
     # @comment = Comment.new(comment_params)
