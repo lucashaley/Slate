@@ -51,7 +51,7 @@
       <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
     <% end %>
     <hr />
-    <%= mail_to @idea.user.email, "Contact ideator" %>
+    <%= mail_to @idea.user.email, 'Contact ideator', subject: @idea.title, :class: 'btn btn-lg w-100' %>
     <hr />
     <%# if current_student == @idea.student_number.to_s %>
     <% if current_user == @idea.user %>
