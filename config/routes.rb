@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :comments
       resources :ratings
     end
+    resources :ratings
     get 'leaderboards', to: 'leaderboards#show'
     get ':page' => 'static#show'
   end

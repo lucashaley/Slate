@@ -94,7 +94,7 @@ Rails.application.configure do
   # Slate config
   config.x.slate.is_accepting_ideas = true
   config.x.slate.is_accepting_comments = true
-  config.x.slate.is_accepting_ratings = false
+  config.x.slate.is_accepting_ratings = true
   config.x.slate.is_accepting_pitches = false
   config.x.slate.is_accepting_projects = false
 end

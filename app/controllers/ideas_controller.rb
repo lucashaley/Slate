@@ -22,6 +22,8 @@ class IdeasController < ApplicationController
     @is_owner = current_user == @idea.user
     @has_rated = @idea.ratings.exists?(student_number: current_student)
     @show_ratings_form = !@is_owner && !@has_rated
+    # @rating = current_user.ratings.find_by_idea(@idea)
+    @rating = @idea.ratings.find_by_student_number(current_student)
   end
 
   # GET /ideas/new

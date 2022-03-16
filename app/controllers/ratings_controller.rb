@@ -8,9 +8,10 @@ class RatingsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @user = User.find_by student_number: params[:student_number]
+    # @user = User.find_by student_number: params[:student_number]
     @idea = Idea.find params[:idea_id]
     @rating = @idea.ratings.create(rating_params)
+    @rating.user = current_user
 
     # TODO: Add back when user model is complete
     # @comment.user = @user

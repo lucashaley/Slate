@@ -2,9 +2,6 @@
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 p-4 gy-5">
   <div class="col col-md-12 col-lg-4 bg-gradient-light order-last">
     <% if Rails.configuration.x.slate.is_accepting_ratings %>
-    <%= @is_owner %>
-    <%= @is_owner || !logged_in? %>
-    <%= logged_in? && !@is_owner %>
     <% if logged_in? && !@is_owner %>
       <h1>Rating</h1>
       <% unless @has_rated %>
@@ -14,9 +11,10 @@
       <% end %>
       <% if @has_rated %>
       <div>
-        You have already rated this idea:
-        <div>Impact: <%= @idea.ratings.find_by_student_number(current_student).impact %></div>
-        <div>Viability: <%= @idea.ratings.find_by_student_number(current_student).viability %></div>
+        <p>You have already rated this idea! You gave it this rating:</p>
+        <h4>Impact: <%= @rating.impact %></h4>
+        <h4>Viability: <%= @rating.viability %></h4>
+        <%= button_to "Delete Rating", @rating, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
       </div>
       <% end %>
     <% end %>
@@ -62,6 +60,9 @@
     <% if Rails.configuration.x.slate.is_accepting_ratings %>
     <div>
       <h2>Ratings</h2>
+      <p>
+        Here is the feedback from your cohort. Please remember that their rating of your idea is <em>not</em> a rating about you.
+      </p>
       <%= scatter_chart @ratings_data, xtitle: "Impact", ytitle: "Viability", min: -5, max: 5, xmin: -5, xmax: 5, height: "500px", empty: "No data" %>
     </div>
     <% end %>

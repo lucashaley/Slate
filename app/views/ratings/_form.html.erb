@@ -6,13 +6,17 @@
       <p class="fw-lighter small">How much do you think this will change the world?</p>
       <%= form.range_field :impact, min: -5, max: 5, class: "form-range", id: "impactRange" %>
       <div class="d-flex fw-lighter small">
-        <div class="w-50">-5</div>
-        <div class="w-50 text-end">5</div>
+        <div class="w-50">-5: low impact</div>
+        <div class="w-50 text-end">high impact: 5</div>
       </div>
       <hr>
       <label for="viabilityRange" class="form-label">Viability</label>
       <p class="fw-lighter small">How possible do you think this idea is?</p>
       <%= form.range_field :viability, min: -5, max: 5, class: "form-range", id: "viabilityRange" %>
+      <div class="d-flex fw-lighter small">
+        <div class="w-50">-5: nigh impossible</div>
+        <div class="w-50 text-end">very possible: 5</div>
+      </div>
       <div>
         <%= form.hidden_field :student_number, value: current_student %>
       </div>
