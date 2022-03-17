@@ -7,6 +7,7 @@
 
     <div class="nav">
       <ul class="nav me-auto mb-2 mb-lg-0">
+        <%= link_to "Leaderboards", "/leaderboards", class: "nav-link" %>
         <%= link_to "FAQs", "/faq", class: "nav-link" %>
         <% if Rails.configuration.x.slate.is_accepting_ideas %>
         <li class="nav-item">
