@@ -1,6 +1,6 @@
 Trestle.resource(:ideas) do
   menu do
-    item :ideas, icon: 'fa fa-star', priority: 2
+    item :ideas, icon: 'fa fa-question', priority: 2
   end
 
   collection do
@@ -16,7 +16,8 @@ Trestle.resource(:ideas) do
       idea.realms.map(&:title)
     end
     column :user
-    column :student_number
+    # column :student_number
+    column :comments_count
     column :created_at, align: :right
     actions
   end
