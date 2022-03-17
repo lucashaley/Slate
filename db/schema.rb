@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_042046) do
+ActiveRecord::Schema[7.0].define(version: 202203150402047) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "idea_id", null: false
@@ -132,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_042046) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "comments_count"
+    t.integer "ideas_count"
   end
 
   create_table "versions", force: :cascade do |t|

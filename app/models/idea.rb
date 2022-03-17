@@ -1,6 +1,6 @@
 class Idea < ApplicationRecord
   # TODO: add back when user model is complete
-  belongs_to :user
+  belongs_to :user, counter_cache: :ideas_count
   has_and_belongs_to_many :realms
   has_many :comments, inverse_of: :idea, dependent: :destroy
   has_many :ratings, dependent: :destroy
@@ -17,4 +17,6 @@ class Idea < ApplicationRecord
   scope :filter_by_student_number, ->(student_number) { where student_number: student_number }
   scope :filter_by_realm, ->(realm_id) { joins(:ideas_realms).where('ideas_realms.realm_id = ?', realm_id) }
   scope :filter_by_user, ->(user_id) { joins(:bookmarks).where('bookmarks.user_id = ?', user_id) }
+
+  scope :order_by_comment_count, -> { order(comments_count: :desc) }
 end
