@@ -23,8 +23,9 @@ class CommentsController < ApplicationController
 
     @idea = Idea.find params[:idea_id]
     @comment = @idea.comments.create(comment_params)
-    @comment.user = current_user
-    
+    # @comment.user = current_user
+    current_user.comments << @comment
+
     # TODO: Add back when user model is complete
     # @comment.user = @user
     # @comment = Comment.new(comment_params)

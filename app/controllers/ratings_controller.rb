@@ -11,7 +11,8 @@ class RatingsController < ApplicationController
     # @user = User.find_by student_number: params[:student_number]
     @idea = Idea.find params[:idea_id]
     @rating = @idea.ratings.create(rating_params)
-    @rating.user = current_user
+    # @rating.user = current_user
+    current_user.ratings << @rating
 
     # TODO: Add back when user model is complete
     # @comment.user = @user
