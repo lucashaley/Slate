@@ -21,6 +21,6 @@ class Idea < ApplicationRecord
   scope :order_by_comment_count, -> { order(comments_count: :desc) }
 
   def self.top_by_comment_count
-    order('comments_count desc').limit(10)
+    order('comments_count desc').limit(10).to_a
   end
 end
