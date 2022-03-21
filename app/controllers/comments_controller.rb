@@ -32,8 +32,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        Rails.logger.debug('Saved!')
-        Idea.reset_counters(@idea.id, :comments)
+        # Rails.logger.debug('Saved!')
+        # Idea.reset_counters(@idea.id, :comments)
         CommentMailer.with(comment: @comment).new_comment.deliver_later
         format.html { redirect_to ideas_url(@idea), notice: 'Idea was successfully created! Now do another!' }
         format.json { render :show, status: :created, location: @comment }

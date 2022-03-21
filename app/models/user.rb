@@ -16,6 +16,6 @@ class User < ApplicationRecord
   end
 
   def self.top_by_comment_count
-    order('comments_count desc').limit(10).to_a
+    where("comments_count is not null").order('comments_count desc').limit(10).to_a
   end
 end
