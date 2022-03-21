@@ -10,6 +10,7 @@ class User < ApplicationRecord
   scope :with_student_number, ->(student_number) { where("student_number = ?", student_number) }
 
   scope :order_by_comment_count, -> { order(comments_count: :desc) }
+  scope :comment_count_is_not_null, -> { where("comments_count is not null") }
 
   def full_name
     "#{first_name} #{last_name}"
