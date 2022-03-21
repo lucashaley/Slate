@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def self.top_by_comment_count
     where("comments_count is not null").order('comments_count desc').limit(10).to_a
   end
+
+  def self.top_by_idea_count
+    where("ideas_count is not null").order('ideas_count desc').limit(10).to_a
+  end
 end

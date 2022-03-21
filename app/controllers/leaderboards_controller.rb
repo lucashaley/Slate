@@ -1,11 +1,7 @@
 class LeaderboardsController < ApplicationController
   def show
-    # comments_count
-    # @top_ideas = Idea.all.order_by_comment_count.limit(10)
     @top_ideas = Idea.top_by_comment_count
-    # @top_users = User.all.order_by_comment_count.limit(10)
-    @top_users = User.top_by_comment_count
-    # @top_users = User.order_by_comment_count
-    # @top_users = User.order('comments_count DESC NULLS LAST').limit(10)
+    @top_commenters = User.top_by_comment_count
+    @top_ideators = User.top_by_idea_count
   end
 end
