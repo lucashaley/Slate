@@ -19,4 +19,8 @@ class Idea < ApplicationRecord
   scope :filter_by_user, ->(user_id) { joins(:bookmarks).where('bookmarks.user_id = ?', user_id) }
 
   scope :order_by_comment_count, -> { order(comments_count: :desc) }
+
+  def self.top_by_comment_count
+    order('comments_count desc').limit(10)
+  end
 end

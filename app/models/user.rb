@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def self.top_by_comment_count
+    order('comments_count desc').limit(10)
+  end
 end
