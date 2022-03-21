@@ -12,14 +12,14 @@
     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
       <h2>Most Commenting Users</h2>
       <ul class="list-group">
-          <%= render partial: "users/list", collection: @top_commenters, as: :user %>
+          <%= render partial: "users/list_comments", collection: @top_commenters, as: :user %>
       </ul>
     </div>
 
     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
       <h2>Most Ideating Users</h2>
       <ul class="list-group">
-          <%= render partial: "users/list", collection: @top_ideators, as: :user %>
+          <%= render partial: "users/list_ideas", collection: @top_ideators, as: :user %>
       </ul>
     </div>
   </div>
