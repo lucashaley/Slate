@@ -5,9 +5,9 @@
   </div>
 </div>
 <div class="mt-4">
-  <p class="lead">
-    <%= idea.content %>
-  </p>
+  <div class="lead">
+    <%= simple_format idea.content %>
+  </div>
   <% idea.realms.each do |realm| %>
     <span class="badge bg-primary"><%= realm.title %></span>
   <% end %>
