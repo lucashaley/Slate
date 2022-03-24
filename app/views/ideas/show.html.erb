@@ -48,8 +48,10 @@
     <% @idea.realms.each do |realm| %>
       <span class="badge text-black" style="background-color: #<%= realm.color -%>"><%= realm.title %></span>
     <% end %>
+    <% if !@is_owner %>
     <hr />
     <%= mail_to @idea.user.email, 'Contact ideator', subject: @idea.title, class: 'btn btn-warning btn-lg w-100' %>
+    <% end %>
     <hr />
     <%# if current_student == @idea.student_number.to_s %>
     <% if current_user == @idea.user %>
