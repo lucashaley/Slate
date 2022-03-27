@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="d-grid gap-2 mt-3">
+  <%= link_to "Back to pitches", pitches_path, class: "btn btn-outline-primary btn-lg" %>
+</div>
+
+<%= render @pitch %>
+
+<% if current_user == @pitch.user %>
+<div class="hstack gap-2 mx-auto my-2">
+  <%= link_to "Edit", edit_pitch_path(@pitch), class: "btn btn-warning btn-lg w-100" %>
+  <%= button_to "Delete", @pitch, method: :delete, class: "btn btn-danger btn-lg w-100" %>
+</div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: one
+  tagline: one
+  logline: one
+  synopsis: MyText
+  slides: MyString
+  presentation_datetime: 2022-03-19 19:08:03
+  user: one
+  core_creatives: one
+
+two:
+  title: two
+  tagline: two
+  logline: two
+  synopsis: MyText
+  slides: MyString
+  presentation_datetime: 2022-03-19 19:08:03
+  user: two
+  core_creatives: two

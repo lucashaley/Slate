@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
+  before_action :set_paper_trail_whodunnit
   # around_action :switch_locale
 
   def switch_locale(&action)

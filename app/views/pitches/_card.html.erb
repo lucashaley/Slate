@@ -1,0 +1,18 @@
+<div class="col">
+  <div class="card h-100" data-controller="idea">
+  	<div class="card-header d-flex" style="height: 100px;">
+    	<h5 class="me-auto"><%= truncate(pitch.title, length:60) %></h5>
+  	</div>
+  	<div class="card-body">
+			<p class="card-text text-left" style="height: 100px;">
+				<%= truncate(pitch.tagline, length: 80) %>
+			</p>
+		</div>
+		<div class="card-footer text-muted d-grid gap-2">
+			<div class="hstack gap-3">
+				<%= link_to "More…", pitch, class: "btn btn-outline-primary btn-sm w-75" %>
+			</div>
+			<small>Created by: <%= pitch.user.full_name() %> on <%= pitch.created_at.strftime("%d/%m/%Y") %></small>
+		</div>
+  </div>
+</div>

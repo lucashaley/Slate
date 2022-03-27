@@ -59,6 +59,9 @@
       <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-warning btn-lg w-100" %>
       <%= button_to "Delete", @idea, :method => :delete, class: "btn btn-danger btn-lg w-100" %>
     </div>
+    <div class="hstack my-2">
+      <%= link_to "Convert to Pitch", pitch_convert_path(@idea), class: "btn btn-primary btn-lg w-100" %>
+    </div>
     <% if Rails.configuration.x.slate.is_accepting_ratings %>
     <div>
       <h2>Ratings</h2>

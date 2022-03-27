@@ -99,6 +99,16 @@ gem 'rubocop-rails', require: false
 # https://github.com/ilyakatz/data-migrate
 gem 'data_migrate'
 
+# https://github.com/paper-trail-gem/paper_trail
+gem 'paper_trail'
+
+# https://github.com/afomera/trix
+# gem 'trix-rails', require: 'trix'
+
+# https://github.com/Iwark/bootstrap-markdown-editor-rails
+gem 'ace-rails-ap'
+gem 'bootstrap-markdown-editor-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]

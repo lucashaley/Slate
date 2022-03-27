@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: MyString
+  user: one
+  pitch: one
+
+two:
+  position: MyString
+  user: two
+  pitch: two

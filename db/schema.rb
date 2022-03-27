@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 202203150402047) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_27_083739) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "idea_id", null: false
@@ -18,6 +18,21 @@ ActiveRecord::Schema[7.0].define(version: 202203150402047) do
     t.datetime "updated_at", null: false
     t.index ["idea_id"], name: "index_bookmarks_on_idea_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "briefs", force: :cascade do |t|
+    t.string "title"
+    t.string "tagline"
+    t.text "overview"
+    t.string "url"
+    t.text "core_deliverable"
+    t.text "supplementary_deliverable"
+    t.string "core_criteria_title"
+    t.text "core_criteria_body"
+    t.string "modeled_after"
+    t.string "modeled_after_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -29,6 +44,16 @@ ActiveRecord::Schema[7.0].define(version: 202203150402047) do
     t.integer "user_id"
     t.index ["idea_id"], name: "index_comments_on_idea_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "creatives", force: :cascade do |t|
+    t.string "position"
+    t.integer "user_id", null: false
+    t.integer "pitch_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pitch_id"], name: "index_creatives_on_pitch_id"
+    t.index ["user_id"], name: "index_creatives_on_user_id"
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
@@ -69,34 +94,21 @@ ActiveRecord::Schema[7.0].define(version: 202203150402047) do
     t.integer "realm_id", null: false
   end
 
-  create_table "lines", force: :cascade do |t|
-    t.text "content"
-    t.integer "pitch_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["pitch_id"], name: "index_lines_on_pitch_id"
-    t.index ["user_id"], name: "index_lines_on_user_id"
-  end
-
   create_table "pitches", force: :cascade do |t|
+    t.string "title"
+    t.string "tagline"
+    t.string "logline"
     t.text "synopsis"
     t.string "slides"
     t.datetime "presentation_datetime"
     t.integer "user_id", null: false
-    t.integer "core_creatives_id"
     t.integer "idea_id", null: false
+    t.integer "brief_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["core_creatives_id"], name: "index_pitches_on_core_creatives_id"
+    t.index ["brief_id"], name: "index_pitches_on_brief_id"
     t.index ["idea_id"], name: "index_pitches_on_idea_id"
     t.index ["user_id"], name: "index_pitches_on_user_id"
-  end
-
-  create_table "pitches_users", id: false, force: :cascade do |t|
-    t.integer "pitch_id", null: false
-    t.integer "user_id", null: false
-    t.index ["pitch_id", "user_id"], name: "index_pitches_users_on_pitch_id_and_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -150,10 +162,10 @@ ActiveRecord::Schema[7.0].define(version: 202203150402047) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "ideas"
   add_foreign_key "comments", "users"
+  add_foreign_key "creatives", "pitches"
+  add_foreign_key "creatives", "users"
   add_foreign_key "ideas", "users"
-  add_foreign_key "lines", "pitches"
-  add_foreign_key "lines", "users"
-  add_foreign_key "pitches", "core_creatives", column: "core_creatives_id"
+  add_foreign_key "pitches", "briefs"
   add_foreign_key "pitches", "ideas"
   add_foreign_key "pitches", "users"
   add_foreign_key "ratings", "ideas"

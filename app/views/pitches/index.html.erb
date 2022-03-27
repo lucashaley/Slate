@@ -1,0 +1,10 @@
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Pitches</h1>
+
+<div id="pitches">
+  <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
+      <%= render partial: "card", collection: @pitches, as: :pitch %>
+  </div>
+</div>

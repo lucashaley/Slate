@@ -1,0 +1,34 @@
+<%= turbo_frame_tag "new_creative" %>
+  <%= form_with(model: creative) do |form| %>
+    <% if creative.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(creative.errors.count, "error") %> prohibited this creative from being saved:</h2>
+  
+        <ul>
+          <% creative.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :position, style: "display: block" %>
+      <%= form.text_field :position %>
+    </div>
+  
+    <div>
+      <%= form.label :user_id, style: "display: block" %>
+      <%= form.text_field :user_id %>
+    </div>
+  
+    <div>
+      <%= form.label :pitch_id, style: "display: block" %>
+      <%= form.text_field :pitch_id %>
+    </div>
+  
+    <div class="d-grid">
+      <%= form.submit "Submit", class: "btn btn-large btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

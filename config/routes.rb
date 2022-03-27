@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get    'logout'  => 'sessions#destroy'
 
   scope '(:locale)', locale: /en|mi/ do
+    resources :pitches do
+      get 'convert'
+      resources :creatives
+    end
     resources :ideas do
       member do
         post 'toggle_bookmark', to: 'ideas#toggle_bookmark'

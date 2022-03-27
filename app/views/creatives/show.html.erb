@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @creative %>
+
+<div>
+  <%= link_to "Edit this creative", edit_creative_path(@creative) %> |
+  <%= link_to "Back to creatives", creatives_path %>
+
+  <%= button_to "Destroy this creative", @creative, method: :delete %>
+</div>

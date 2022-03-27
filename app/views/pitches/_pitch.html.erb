@@ -1,0 +1,39 @@
+<div class="card my-2">
+  <div class="card-header">
+    <h1 class="display-1"><%= pitch.title %></h1>
+    <h2><%= pitch.tagline %></h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <h3>Logline</h3>
+        <p class="lead">
+          <%= pitch.logline %>
+        </p>
+        
+        <h3>Brief</h3>
+        <p class="lead">
+          <%= pitch.brief.title %>
+        </p>
+        
+        <h3>Synopsis</h3>
+        <p style="white-space: pre-wrap;">
+          <%= pitch.synopsis %>
+        </p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h3>Core Creatives</h3>
+          <ul class="list-group">
+            <%# render partial: "creative", collection: pitch.core_creatives, as: :creative %>
+            <%= render pitch.creatives %>
+          </ul>
+          <em>The ability to add further core creatives will be added at a later date.</em>
+          <%# turbo_frame_tag "new_creative", src: pitch_creative_path(pitch) %>
+          <%# turbo_frame_tag "new_comment", src: idea_comment_path(@idea), target: "_top" %>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <small>Created by: <%= pitch.user.full_name() %> on <%= pitch.created_at.strftime("%d/%m/%Y") %> • <%= link_to 'View original idea', pitch.idea %></small>
+  </div>
+</div>

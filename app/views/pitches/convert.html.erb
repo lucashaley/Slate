@@ -1,0 +1,67 @@
+<h1>Convert Idea</h1>
+
+<%= form_with(model: @pitch) do |form| %>
+  <% if @pitch.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@pitch.errors.count, "error") %> prohibited this pitch from being saved:</h2>
+
+      <ul>
+        <% @pitch.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3">
+    <%= form.label :title, class: "col-sm-2 col-form-label col-form-label-sm" %>
+    <div class="col-sm-10">
+      <%= form.text_field :title, class: "form-control form-control-lg" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= form.label :tagline, class: "col-sm-2 col-form-label col-form-label-sm" %>
+    <div class="col-sm-10">
+      <%= form.text_field :tagline, class: "form-control form-control-lg" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= form.label :logline, class: "col-sm-2 col-form-label col-form-label-sm" %>
+    <div class="col-sm-10">
+      <%= form.text_field :logline, class: "form-control form-control-lg" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= form.label :synopsis, class: "col-sm-2 col-form-label col-form-label-sm" %>
+    <div class="col-sm-10">
+      <%= form.text_area :synopsis, class: "form-control form-control-lg" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= form.label :brief, class: "col-sm-2 col-form-label col-form-label-sm" %>
+    <div class="col-sm-10">
+      <%= form.collection_select :brief_id, Brief.order(:title), :id, :title, {prompt: false}, {class: "form-select form-select-sm"} %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.hidden_field :idea_id, value: @pitch.idea_id %>
+    <%= form.hidden_field :user_id, value: @pitch.user_id %>
+  </div>
+  <%= form.fields_for :creatives do |creatives_subform| %>
+  <div class="row mb-3">
+    <%= creatives_subform.label 'What is your role on this project?', class: "col-sm-2 col-form-label col-form-label-sm" %>
+    <div class="col-sm-10">
+      <%= creatives_subform.hidden_field :user_id, value: @pitch.user_id %>
+      <%= creatives_subform.text_field :position, class: "form-control form-control-lg" %>
+    </div>
+  </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<div>
+  <%= link_to "Back to ideas", ideas_path %>
+</div>
