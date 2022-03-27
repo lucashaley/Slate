@@ -58,10 +58,11 @@
   </div>
   <% end %>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-grid">
+    <%= form.submit "Submit", class: "btn btn-large btn-primary" %>
+  </div>
+  <div class="d-grid my-2">
+    <%= link_to "Cancel", idea_path(@pitch.idea), class: "btn btn-large btn-danger" %>
   </div>
 <% end %>
-<div>
-  <%= link_to "Back to ideas", ideas_path %>
-</div>
+
