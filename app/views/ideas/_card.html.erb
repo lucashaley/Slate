@@ -1,22 +1,22 @@
 
 <div class="col">
-<div class="card h-100" data-controller="idea">
-  <div class="card-header d-flex" style="height: 100px;">
-    <h5 class="me-auto"><%= truncate(idea.title, length:60) %></h5>
-    <% if logged_in? %>
-    <h5>
-      <%= button_to toggle_bookmark_idea_path(idea), class: "btn btn-outline-primary btn-sm" do %>
-        <%= turbo_frame_tag idea do %>
-          <% if current_user.marks.include? idea %>
-            <i class="bi bi-bookmark-check-fill bookmark-icon ml-3" id="<%= idea.id %>"></i>
-          <% else %>
-            <i class="bi bi-bookmark-plus bookmark-icon ml-3" id="<%= idea.id %>"></i>
+  <div class="card h-100" data-controller="idea">
+    <div class="card-header d-flex" style="height: 100px;">
+      <h5 class="me-auto"><%= truncate(idea.title, length:60) %></h5>
+      <% if logged_in? %>
+      <h5>
+        <%= button_to toggle_bookmark_idea_path(idea), class: "btn btn-outline-primary btn-sm" do %>
+          <%= turbo_frame_tag idea do %>
+            <% if current_user.marks.include? idea %>
+              <i class="bi bi-bookmark-check-fill bookmark-icon ml-3" id="<%= idea.id %>"></i>
+            <% else %>
+              <i class="bi bi-bookmark-plus bookmark-icon ml-3" id="<%= idea.id %>"></i>
+            <% end %>
           <% end %>
         <% end %>
+      </h5>
       <% end %>
-    </h5>
-    <% end %>
-  </div>
+    </div>
     <div class="card-body">
       <p class="card-text text-left" style="height: 100px;">
         <%= truncate(idea.content, length: 80) %>
