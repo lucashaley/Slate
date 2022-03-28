@@ -1,0 +1,18 @@
+
+<div class="col">
+  <div class="card h-100" data-controller="idea">
+    <div class="card-header d-flex" style="height: 100px;">
+      <h5 class="me-auto"><%= brief.title %></h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text text-left" style="height: 60px;">
+        <%= brief.tagline %>
+      </p>
+    </div>
+    <div class="card-footer text-muted d-grid gap-2">
+      <div class="hstack gap-3">
+        <%= link_to "More…", brief, class: "btn btn-outline-primary btn-sm w-75" %>
+      </div>
+    </div>
+  </div>
+</div>

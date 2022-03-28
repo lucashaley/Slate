@@ -1,0 +1,34 @@
+<div>
+  <div class="d-grid gap-2 mt-3">
+    <%= link_to "Back to briefs", briefs_path, class: "btn btn-outline-primary btn-lg" %>
+  </div>
+  <div class="card my-2">
+    <div class="card-header">
+      <h1 class="display-1"><%= @brief.title %></h1>
+      <h2><%= @brief.tagline %></h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-lg-6">          
+          <h3>Introduction</h3>
+          <p style="white-space: pre-wrap;">
+            <%= @brief.overview %>
+          </p>
+        </div>
+        <div class="col-12 col-lg-6">          
+          <h5>Core Deliverable</h5>
+          <p style="white-space: pre-wrap;">
+            <%= @brief.core_deliverable -%>
+          </p>
+          <h5>Supplementary Deliverable</h5>
+          <p style="white-space: pre-wrap;">
+            <%= @brief.supplementary_deliverable -%>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      
+    </div>
+  </div>
+</div>

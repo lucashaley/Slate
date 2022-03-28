@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :ratings
     end
     resources :ratings
+    resources :briefs, only: [:index, :show]
     get 'leaderboards', to: 'leaderboards#show'
     get ':page' => 'static#show'
   end
