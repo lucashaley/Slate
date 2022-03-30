@@ -90,6 +90,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # SMTP settings for exchange
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-west-1.amazonaws.com',
+    port: '587',
+    user_name: 'AKIAR7ZOY3QEH6MKFA5L',
+    password: 'BL51n6LFGXSKe/PM3jgzf9r11SFgB1v6RuA+A8ZLvSsr',
+    # authentication: :login,
+    # domain: 'massey.ac.nz',
+    enable_starttls_auto: true,
+    domain: 'cmp.ac.nz',
+    authentication: :plain
+  }
 
   # Slate config
   config.x.slate.is_accepting_ideas = true

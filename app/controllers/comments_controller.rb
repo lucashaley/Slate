@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        # CommentMailer.with(comment: @comment).new_comment.deliver_later
+        CommentMailer.with(comment: @comment).new_comment.deliver_later
         format.html { redirect_to idea_url(@idea), notice: 'Idea was successfully created! Now do another!' }
         format.json { render :show, status: :created, location: @comment }
       else
