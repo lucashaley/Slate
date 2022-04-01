@@ -28,7 +28,7 @@
             <%= render pitch.creatives %>
           </ul>
           <em>The ability to add further core creatives will be added at a later date.</em>
-          <%# turbo_frame_tag "new_creative", src: pitch_creative_path(pitch) %>
+          <%= turbo_frame_tag "new_creative", src: new_pitch_creative_path(pitch) %>
           <%# turbo_frame_tag "new_comment", src: idea_comment_path(@idea), target: "_top" %>
       </div>
     </div>

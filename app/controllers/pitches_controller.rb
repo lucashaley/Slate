@@ -8,6 +8,8 @@ class PitchesController < ApplicationController
 
   # GET /pitches/1 or /pitches/1.json
   def show
+    # this doesn't work because the view tries to list the new creative, and comes up empty
+    # @new_creative = @pitch.creatives.build
   end
 
   # GET /pitches/new
@@ -82,6 +84,6 @@ class PitchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pitch_params
-      params.require(:pitch).permit(:synopsis, :slides, :presentation_datetime, :user_id, :title, :tagline, :logline, :idea_id, :brief_id, creatives_attributes: [:user_id, :position])
+      params.require(:pitch).permit(:synopsis, :slides, :presentation_datetime, :user_id, :title, :tagline, :logline, :idea_id, :brief_id, creatives_attributes: [:pitch_id, :user_id, :position])
     end
 end

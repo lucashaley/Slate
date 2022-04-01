@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "new_creative" %>
-  <%= form_with(model: creative) do |form| %>
+  <%= form_with(model: [@creative.pitch, @creative]) do |form| %>
     <% if creative.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(creative.errors.count, "error") %> prohibited this creative from being saved:</h2>
@@ -31,4 +31,4 @@
       <%= form.submit "Submit", class: "btn btn-large btn-primary" %>
     </div>
   <% end %>
-<% end %>
+<%# end %>
